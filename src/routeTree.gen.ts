@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as QuoteRouteImport } from './routes/quote'
+import { Route as MembershipRouteImport } from './routes/membership'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BookRouteImport } from './routes/book'
@@ -25,6 +26,11 @@ const ServicesRoute = ServicesRouteImport.update({
 const QuoteRoute = QuoteRouteImport.update({
   id: '/quote',
   path: '/quote',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MembershipRoute = MembershipRouteImport.update({
+  id: '/membership',
+  path: '/membership',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GalleryRoute = GalleryRouteImport.update({
@@ -59,6 +65,7 @@ export interface FileRoutesByFullPath {
   '/book': typeof BookRoute
   '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
+  '/membership': typeof MembershipRoute
   '/quote': typeof QuoteRoute
   '/services': typeof ServicesRoute
 }
@@ -68,6 +75,7 @@ export interface FileRoutesByTo {
   '/book': typeof BookRoute
   '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
+  '/membership': typeof MembershipRoute
   '/quote': typeof QuoteRoute
   '/services': typeof ServicesRoute
 }
@@ -78,6 +86,7 @@ export interface FileRoutesById {
   '/book': typeof BookRoute
   '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
+  '/membership': typeof MembershipRoute
   '/quote': typeof QuoteRoute
   '/services': typeof ServicesRoute
 }
@@ -89,6 +98,7 @@ export interface FileRouteTypes {
     | '/book'
     | '/contact'
     | '/gallery'
+    | '/membership'
     | '/quote'
     | '/services'
   fileRoutesByTo: FileRoutesByTo
@@ -98,6 +108,7 @@ export interface FileRouteTypes {
     | '/book'
     | '/contact'
     | '/gallery'
+    | '/membership'
     | '/quote'
     | '/services'
   id:
@@ -107,6 +118,7 @@ export interface FileRouteTypes {
     | '/book'
     | '/contact'
     | '/gallery'
+    | '/membership'
     | '/quote'
     | '/services'
   fileRoutesById: FileRoutesById
@@ -117,6 +129,7 @@ export interface RootRouteChildren {
   BookRoute: typeof BookRoute
   ContactRoute: typeof ContactRoute
   GalleryRoute: typeof GalleryRoute
+  MembershipRoute: typeof MembershipRoute
   QuoteRoute: typeof QuoteRoute
   ServicesRoute: typeof ServicesRoute
 }
@@ -135,6 +148,13 @@ declare module '@tanstack/react-router' {
       path: '/quote'
       fullPath: '/quote'
       preLoaderRoute: typeof QuoteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/membership': {
+      id: '/membership'
+      path: '/membership'
+      fullPath: '/membership'
+      preLoaderRoute: typeof MembershipRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gallery': {
@@ -181,9 +201,20 @@ const rootRouteChildren: RootRouteChildren = {
   BookRoute: BookRoute,
   ContactRoute: ContactRoute,
   GalleryRoute: GalleryRoute,
+  MembershipRoute: MembershipRoute,
   QuoteRoute: QuoteRoute,
   ServicesRoute: ServicesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
