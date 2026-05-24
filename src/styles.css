@@ -72,6 +72,12 @@
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
   }
+  select, option { background-color: var(--color-card); color: var(--color-foreground); }
+  input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+    -webkit-text-fill-color: var(--color-foreground);
+    -webkit-box-shadow: 0 0 0 1000px var(--color-card) inset;
+    caret-color: var(--color-foreground);
+  }
   h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
 }
 
