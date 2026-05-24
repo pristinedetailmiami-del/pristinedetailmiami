@@ -1,98 +1,119 @@
 import { Link } from "@tanstack/react-router";
-import { Menu, Phone, X } from "lucide-react";
-import { useState } from "react";
+import { useState, createContext, useContext } from "react";
+import { Phone, Menu, X } from "lucide-react";
 import logo from "@/assets/pristine/logo.png";
 
-const nav = [
-  { to: "/services", label: "Services" },
-  { to: "/membership", label: "Membership" },
-  { to: "/gallery", label: "Gallery" },
-  { to: "/quote", label: "Quote" },
-  { to: "/about", label: "About" },
-  { to: "/contact", label: "Contact" },
-] as const;
+// Language context — export so other components can use it
+export type Lang = "en" | "es";
+export const LangContext = createContext<{ lang: Lang; setLang: (l: Lang) => void }>({
+  lang: "en",
+  setLang: () => {},
+});
+export const useLang = () => useContext(LangContext);
+
+const NAV_LABELS = {
+  en: { services: "Services", membership: "Membership", gallery: "Gallery", quote: "Quote", about: "About", contact: "Contact", book: "Book Now" },
+  es: { services: "Servicios", membership: "Membresía", gallery: "Galería", quote: "Cotizar", about: "Nosotros", contact: "Contacto", book: "Reservar" },
+};
 
 export function SiteHeader() {
-  const [open, setOpen] = useState(false);
+  const { lang, setLang } = useLang();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const t = NAV_LABELS[lang];
+
+  const navLinks = [
+    { to: "/services", label: t.services },
+    { to: "/membership", label: t.membership },
+    { to: "/gallery", label: t.gallery },
+    { to: "/quote", label: t.quote },
+    { to: "/about", label: t.about },
+    { to: "/contact", label: t.contact },
+  ];
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 border-b border-border bg-background/80 backdrop-blur-xl">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
-        <Link to="/" onClick={() => setOpen(false)} className="flex items-center gap-2.5 group shrink-0">
-          <img src={logo} alt="Pristine Auto Detailing" className="h-9 w-9 rounded-sm" />
-          <span className="font-display text-lg tracking-tight uppercase">
-            Pristine<span className="text-electric">.</span>
-          </span>
+    <header className="fixed top-0 inset-x-0 z-40 border-b border-border/50 bg-background/80 backdrop-blur-md">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 h-14 flex items-center justify-between gap-6">
+
+        {/* Logo */}
+        <Link to="/" className="flex items-center gap-2 shrink-0" onClick={() => setMenuOpen(false)}>
+          <img src={logo} alt="Pristine Auto Detailing" className="h-6 w-auto" />
+          <span className="font-display text-lg uppercase tracking-tight">Pristine.</span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-8 text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground">
-          {nav.map((n) => (
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex items-center gap-6">
+          {navLinks.map((l) => (
             <Link
-              key={n.to}
-              to={n.to}
-              activeProps={{ className: "text-electric" }}
-              className="hover:text-foreground transition-colors"
+              key={l.to}
+              to={l.to}
+              className="text-[11px] font-mono uppercase tracking-[0.2em] text-muted-foreground hover:text-foreground transition-colors"
             >
-              {n.label}
+              {l.label}
             </Link>
           ))}
         </nav>
 
-        <div className="flex items-center gap-2 sm:gap-3">
+        {/* Right side */}
+        <div className="flex items-center gap-3">
+          {/* Language Toggle */}
+          <button
+            onClick={() => setLang(lang === "en" ? "es" : "en")}
+            className="hidden md:inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-[0.2em] border border-border px-2.5 py-1.5 hover:border-electric hover:text-electric transition-colors"
+            aria-label="Toggle language"
+          >
+            {lang === "en" ? "ES" : "EN"}
+          </button>
+
           <a
-            href="tel:+17577625110"
-            className="hidden lg:flex items-center gap-2 text-xs font-mono text-muted-foreground hover:text-electric transition-colors"
+            href="tel:+17577841773"
+            className="hidden md:inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.15em] text-muted-foreground hover:text-electric transition-colors"
           >
             <Phone className="h-3.5 w-3.5" />
-            (757) 762-5110
+            (757) 784-1773
           </a>
+
           <Link
             to="/book"
-            className="hidden sm:inline-flex bg-electric text-ink px-4 py-2 text-xs font-bold uppercase tracking-tight hover:bg-foreground transition-colors"
+            className="bg-electric text-ink px-4 py-2 text-[11px] font-bold uppercase tracking-tight hover:bg-foreground transition-colors"
           >
-            Book Now
+            {t.book}
           </Link>
+
+          {/* Mobile menu toggle */}
           <button
-            type="button"
+            className="md:hidden p-1"
+            onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
-            onClick={() => setOpen((v) => !v)}
-            className="md:hidden p-2 -mr-2 text-foreground"
           >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile menu */}
-      {open && (
-        <div className="md:hidden border-t border-border bg-background">
-          <nav className="flex flex-col px-6 py-4 gap-1 text-sm font-mono uppercase tracking-[0.2em]">
-            {nav.map((n) => (
-              <Link
-                key={n.to}
-                to={n.to}
-                onClick={() => setOpen(false)}
-                activeProps={{ className: "text-electric" }}
-                className="py-3 border-b border-border/50 text-muted-foreground hover:text-foreground"
-              >
-                {n.label}
-              </Link>
-            ))}
+      {/* Mobile Menu */}
+      {menuOpen && (
+        <div className="md:hidden border-t border-border bg-background/95 backdrop-blur-md px-6 py-6 flex flex-col gap-4">
+          {navLinks.map((l) => (
             <Link
-              to="/book"
-              onClick={() => setOpen(false)}
-              className="mt-4 bg-electric text-ink text-center px-4 py-3 text-xs font-bold uppercase tracking-tight"
+              key={l.to}
+              to={l.to}
+              onClick={() => setMenuOpen(false)}
+              className="font-mono text-sm uppercase tracking-[0.2em] text-muted-foreground hover:text-electric transition-colors py-1"
             >
-              Book Now
+              {l.label}
             </Link>
-            <a
-              href="tel:+17577625110"
-              className="mt-2 flex items-center justify-center gap-2 text-xs text-muted-foreground py-2"
-            >
-              <Phone className="h-3.5 w-3.5" />
-              (757) 762-5110
+          ))}
+          <div className="flex items-center gap-3 pt-2 border-t border-border">
+            <a href="tel:+17577841773" className="font-mono text-sm text-muted-foreground hover:text-electric">
+              (757) 784-1773
             </a>
-          </nav>
+            <button
+              onClick={() => setLang(lang === "en" ? "es" : "en")}
+              className="ml-auto font-mono text-[10px] uppercase tracking-[0.2em] border border-border px-2.5 py-1.5 hover:border-electric hover:text-electric transition-colors"
+            >
+              {lang === "en" ? "Español" : "English"}
+            </button>
+          </div>
         </div>
       )}
     </header>
