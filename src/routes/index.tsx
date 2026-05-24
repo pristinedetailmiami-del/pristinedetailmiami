@@ -49,7 +49,7 @@ function HomePage() {
     <>
       {/* HERO */}
       <section className="relative min-h-screen flex flex-col justify-end pb-16 md:pb-24 px-6 md:px-12 overflow-hidden">
-        <div className="absolute inset-人">
+        <div className="absolute inset-0">
           <img
             src={hero}
             alt="Lamborghini wheel close-up"
