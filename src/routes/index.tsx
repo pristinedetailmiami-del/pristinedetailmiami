@@ -4,6 +4,7 @@ import hero from "@/assets/pristine/hero-lambo.jpg";
 import interior from "@/assets/pristine/interior.png";
 import exterior from "@/assets/pristine/exterior.jpg";
 import ceramic from "@/assets/pristine/ceramic.jpg";
+import quoteImg from "@/assets/pristine/quote.jpg";
 import gallery1 from "@/assets/pristine/gallery1.jpg";
 import { SERVICES } from "@/lib/services";
 
