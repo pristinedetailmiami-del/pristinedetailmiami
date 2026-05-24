@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, MapPin, Shield, Sparkles, Star } from "lucide-react";
-import hero from "@/assets/pristine/hero.jpg";
+import hero from "@/assets/pristine/hero-lambo.jpg";
 import interior from "@/assets/pristine/interior.png";
 import exterior from "@/assets/pristine/exterior.jpg";
 import ceramic from "@/assets/pristine/ceramic.jpg";
