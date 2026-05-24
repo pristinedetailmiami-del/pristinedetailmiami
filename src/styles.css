@@ -57,7 +57,7 @@
   --destructive: oklch(0.6 0.22 25);
   --destructive-foreground: oklch(1 0 0);
   --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 12%);
+  --input: oklch(0.12 0 0);
   --ring: oklch(0.82 0.18 220);
   --electric: oklch(0.82 0.18 220);
   --electric-glow: oklch(0.82 0.18 220 / 40%);
@@ -65,12 +65,18 @@
 
 @layer base {
   * { border-color: var(--color-border); }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; color-scheme: dark; background-color: var(--color-background); }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
+  }
+  select, option { background-color: var(--color-card); color: var(--color-foreground); }
+  input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+    -webkit-text-fill-color: var(--color-foreground);
+    -webkit-box-shadow: 0 0 0 1000px var(--color-card) inset;
+    caret-color: var(--color-foreground);
   }
   h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
 }
