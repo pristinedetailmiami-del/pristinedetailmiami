@@ -68,10 +68,10 @@ function HomePage() {
             <span className="h-px w-8 bg-electric" />
             Mobile Detailing · Miami, FL
           </div>
-          <h1 className="font-display text-[3.5rem] sm:text-7xl md:text-[9rem] leading-[0.85] uppercase tracking-tight mb-8 text-balance">
-            We Do<br />
+          <h1 className="font-display text-[2.8rem] sm:text-6xl md:text-[8rem] leading-[0.85] uppercase tracking-tight mb-8 text-balance">
+            Not just clean.<br />
             <span className="inline-block border-y border-electric/40 px-2 -ml-2 text-electric">
-              Any Car.
+              It's Pristine.
             </span>
           </h1>
           <div className="flex flex-col md:flex-row gap-8 md:items-end md:justify-between">
