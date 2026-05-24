@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, MapPin, Shield, Sparkles, Star } from "lucide-react";
-import hero from "@/assets/pristine/hero.jpg";
+import hero from "@/assets/pristine/hero-lambo.jpg";
 import interior from "@/assets/pristine/interior.png";
 import exterior from "@/assets/pristine/exterior.jpg";
 import ceramic from "@/assets/pristine/ceramic.jpg";
@@ -48,11 +48,19 @@ function HomePage() {
   return (
     <>
       {/* HERO */}
-      <section className="relative min-h-[92vh] flex flex-col justify-end pb-20 px-6 md:px-12 overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img src={hero} alt="" className="w-full h-full object-cover opacity-60" />
+      <section className="relative min-h-screen flex flex-col justify-end pb-16 md:pb-24 px-6 md:px-12 overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src={hero}
+            alt="Lamborghini wheel close-up"
+            className="w-full h-full object-cover object-center"
+            width={1920}
+            height={1088}
+          />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,transparent_0%,rgba(0,0,0,0.5)_80%)]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
-          <div className="absolute inset-0 grain opacity-50" />
+          <div className="absolute inset-0 grain opacity-40" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto w-full float-in">
