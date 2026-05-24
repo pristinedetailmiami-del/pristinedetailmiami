@@ -78,7 +78,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "Premium mobile auto detailing in Miami. Interior, exterior, ceramic coating & paint correction. We come to you — from Brickell to Fort Lauderdale.",
       },
-      { property: "og:title", content: "Pristine Auto Detailing — Not just clean. It's Pristine." },
+      { property: "og:title", content: "Pristine Auto Detailing — Mobile Detailing Miami, FL" },
       {
         property: "og:description",
         content:
@@ -86,6 +86,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Pristine Auto Detailing — Mobile Detailing Miami, FL" },
+      { name: "description", content: "Pristine Wheels Miami offers professional mobile auto detailing services for any vehicle, coming directly to you across Miami." },
+      { property: "og:description", content: "Pristine Wheels Miami offers professional mobile auto detailing services for any vehicle, coming directly to you across Miami." },
+      { name: "twitter:description", content: "Pristine Wheels Miami offers professional mobile auto detailing services for any vehicle, coming directly to you across Miami." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/9ed66dd9-7531-4b3a-ba33-52564dd51d06/id-preview-a325b091--a5adba47-e7c7-4593-8df5-0c124d248c57.lovable.app-1779592638009.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/9ed66dd9-7531-4b3a-ba33-52564dd51d06/id-preview-a325b091--a5adba47-e7c7-4593-8df5-0c124d248c57.lovable.app-1779592638009.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
