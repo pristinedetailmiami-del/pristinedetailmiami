@@ -5,6 +5,7 @@ import logo from "@/assets/pristine/logo.png";
 
 const nav = [
   { to: "/services", label: "Services" },
+  { to: "/membership", label: "Membership" },
   { to: "/gallery", label: "Gallery" },
   { to: "/quote", label: "Quote" },
   { to: "/about", label: "About" },
