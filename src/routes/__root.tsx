@@ -78,7 +78,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "Premium mobile auto detailing in Miami. Interior, exterior, ceramic coating & paint correction. We come to you — from Brickell to Fort Lauderdale.",
       },
-      { property: "og:title", content: "Pristine Auto Detailing — We Do Any Car" },
+      { property: "og:title", content: "Pristine Auto Detailing — Not just clean. It's Pristine." },
       {
         property: "og:description",
         content:

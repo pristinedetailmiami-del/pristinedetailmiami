@@ -14,8 +14,8 @@ export function SiteFooter() {
               </span>
             </div>
             <p className="text-sm text-muted-foreground max-w-xs leading-relaxed">
-              Premium mobile auto detailing across Miami-Dade & Broward. We do any car —
-              from daily drivers to exotics.
+              Premium mobile auto detailing across Miami-Dade & Broward. Not just clean —
+              it's Pristine. From daily drivers to exotics.
             </p>
           </div>
           <div>
@@ -70,7 +70,7 @@ export function SiteFooter() {
         </div>
         <div className="flex flex-col md:flex-row justify-between gap-4 pt-8 border-t border-border text-[10px] font-mono text-muted-foreground uppercase tracking-[0.2em]">
           <div>© {new Date().getFullYear()} Pristine Auto Detailing · Miami, FL</div>
-          <div>Insured · Eco-Friendly · We Do Any Car</div>
+          <div>Insured · Eco-Friendly · Not just clean, it's Pristine</div>
         </div>
       </div>
     </footer>
