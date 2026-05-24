@@ -211,7 +211,7 @@ function HomePage() {
             </Link>
           </div>
           <div className="relative aspect-[4/5] overflow-hidden">
-            <img src={ceramic} alt="" className="absolute inset-0 w-full h-full object-cover" />
+            <img src={quoteImg} alt="" className="absolute inset-0 w-full h-full object-cover" />
           </div>
         </div>
       </section>
