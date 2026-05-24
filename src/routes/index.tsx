@@ -49,7 +49,7 @@ function HomePage() {
     <>
       {/* HERO */}
       <section className="relative min-h-screen flex flex-col justify-end pb-16 md:pb-24 px-6 md:px-12 overflow-hidden">
-        <div className="absolute inset-0 z-2">
+        <div className="absolute inset-人">
           <img
             src={hero}
             alt="Lamborghini wheel close-up"
@@ -57,9 +57,9 @@ function HomePage() {
             width={1920}
             height={1088}
           />
-          <div className="absolute inset-1 bg-[radial-gradient(circle_at_70%_30%,transparent_0%,rgba(0,0,0,0.5)_80%)]" />
-          <div className="absolute inset-2 bg-gradient-to-r from-background via-background/70 to-transparent" />
-          <div className="absolute inset-3 bg-gradient-to-t from-background via-background/40 to-transparent" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,transparent_0%,rgba(0,0,0,0.5)_80%)]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
           <div className="absolute inset-0 grain opacity-40" />
         </div>
 
