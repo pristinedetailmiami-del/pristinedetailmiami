@@ -4,6 +4,7 @@ import hero from "@/assets/pristine/hero-lambo.jpg";
 import interior from "@/assets/pristine/interior.png";
 import exterior from "@/assets/pristine/exterior.jpg";
 import ceramic from "@/assets/pristine/ceramic.jpg";
+import quoteImg from "@/assets/pristine/quote.jpg";
 import gallery1 from "@/assets/pristine/gallery1.jpg";
 import { SERVICES } from "@/lib/services";
 
@@ -210,7 +211,7 @@ function HomePage() {
             </Link>
           </div>
           <div className="relative aspect-[4/5] overflow-hidden">
-            <img src={ceramic} alt="" className="absolute inset-0 w-full h-full object-cover" />
+            <img src={quoteImg} alt="" className="absolute inset-0 w-full h-full object-cover" />
           </div>
         </div>
       </section>
